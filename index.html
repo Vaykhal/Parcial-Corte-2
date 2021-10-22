@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chevrolet Car</title>
+  <script type="module" src="./src/app.js"></script>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+
+
+  <div id="renderScene">
+    <div id="backBtn">Volver</div>
+  </div>
+
+  <div id="content"> 
+    
+    <img src="./assets/img/Corvettelogo.png" class="image">
+    <img src="./assets/img/Chevrolet-logo.png" class="image2">
+    <div class="btnOption start">
+      <div class="title">Car Models<br></div>
+    </div>
+
+<video autoplay loop src="./assets/videos/video corvette 11.mp4" class="video"></video>
+
+<!-- ENCABEZADO Y SUS APARTADOS -->
+<header class="header">
+  <div class="container">
+  <div class="btn-menu">
+    <label for="btn-menu">☰</label>
+  </div>
+    <div class="logo">
+      <h1><b>CORVETTE</b></h1>
+    </div>
+    <nav class="menu">
+      <a href="#">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MENÚ LATERAL Y SUS APARTADOS -->
+<div class="capa"></div>
+
+<input type="checkbox" id="btn-menu">
+<div class="container-menu">
+<div class="cont-menu">
+  <nav>
+    <a href="#">Portafolio</a>
+    <a href="#">Servicios</a>
+    <a href="#">Suscribirse</a>
+    <a href="#">Facebook</a>
+    <a href="#">Youtube</a>
+    <a href="#">Instagram</a>
+  </nav>
+  <label for="btn-menu">✖️</label>
+</div>
+</div>
+
+  </div>
+ 
+  <script type="module">
+    import { main, changeModel, changeTextureOne, changeTextureTwo, changeTextureThree} from './src/app.js';
+
+    const options = document.querySelectorAll('.btnOption');
+    const content = document.querySelector('#content');
+    const backBtn = document.querySelector('#backBtn');
+    const btnModelOne = document.querySelector('.modelOne');
+    const btnModelTwo = document.querySelector('.modelTwo');
+    const btnModelThree = document.querySelector('.modelThree');
+    const btnModelFour = document.querySelector('.modelFour');
+    const btnTextureOne = document.querySelector('.textureOne');
+    const btnTextureTwo = document.querySelector('.textureTwo');
+    const btnTextureThree = document.querySelector('.textureThree'); 
+
+    let size = 10;
+
+    options.forEach(optionSelected => {
+      optionSelected.onclick = function(){
+        const optionSize = this.dataset.size;
+        size = optionSize;
+        toogleContent();
+        main(size);
+      }
+    });
+
+    backBtn.onclick = function(){
+      toogleContent();
+      cleanGUI();
+      reset();
+    }
+    
+    btnModelOne.onclick = function () {
+      changeModel('modelOne');
+    }
+
+    btnModelTwo.onclick = function () {
+      changeModel('modelTwo');
+    }
+
+    btnModelThree.onclick = function () {
+      changeModel('modelThree');
+    }
+
+    btnModelFour.onclick = function () {
+      changeModel('modelFour');
+    }
+
+    btnTextureOne.onclick = function () {
+      changeTextureOne('img');
+    }
+  
+    btnTextureTwo.onclick = function () {
+      changeTextureTwo('img');
+    }
+    
+    btnTextureThree.onclick = function () {
+      changeTextureThree('img');
+    }
+    
+    function toogleContent (){
+      content.style.display = content.style.display == 'none' ? 'flex' : 'none';
+    }
+
+  </script>
+
+<div id="contentModels">
+  <div class="btnOptionModels1 custom modelOne">
+    <img src="./assets/img/CARRO1.png" class="CarOne">
+  </div>
+
+  <div class="btnOptionModels2 custom modelTwo">
+    <img src="./assets/img/CARRO2.png" class="CarTwo">
+  </div>
+
+  <div class="btnOptionModels3 custom modelThree">
+    <img src="./assets/img/CARRO3.png" class="CarThree">
+  </div>
+
+  <div class="btnOptionModels4 custom modelFour">
+    <img src="./assets/img/CARRO4.png" class="CarFour">
+  </div>
+</div>
+
+<div id="contentTexture">
+  <div class="btnOptionTexture1 custom textureOne"></div>
+
+  <div class="btnOptionTexture2 custom textureTwo"></div>
+
+  <div class="btnOptionTexture3 custom textureThree"></div>
+</div> 
+
+</body>
+
+</html>
